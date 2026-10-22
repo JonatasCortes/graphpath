@@ -165,9 +165,11 @@ When the automation finishes, an `assets/` folder will be created with the `cont
 
 Finally, add the following to your profile `README.md`:
 
-```markdown
+```html
 <p align="center">
-  <img src="assets/contrib.svg" alt="Contribution Calendar" width="700">
+  <a href="https://github.com/JonatasCortes/graphpath">
+    <img src="assets/contrib.svg" alt="Contribution Calendar" width="700">
+  </a>
 </p>
 ```
 
