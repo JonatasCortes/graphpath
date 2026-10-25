@@ -99,8 +99,8 @@ jobs:
 
       - name: Generate svg contribution calendar
         env:
-          CONTRIB_TOKEN: ${{ secrets.CONTRIB_TOKEN }}
-        run: python update.py
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: python -m graphpath
 
       - name: Save to repository if changed
         run: |
@@ -149,7 +149,7 @@ With the token copied:
 
 1. Go to your profile repository on GitHub and open **Settings → Secrets and variables → Actions**.
 2. Click **New repository secret**.
-3. In **Name**, type exactly `CONTRIB_TOKEN`.
+3. In **Name**, type exactly `GH_TOKEN`.
 4. In **Secret**, paste the token you just created.
 5. Click **Add secret**.
 
