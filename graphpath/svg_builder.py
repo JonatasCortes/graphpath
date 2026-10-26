@@ -1,5 +1,5 @@
 from typing import List, Tuple
-from ._constants import (
+from .constants import (
     CALENDAR_TITLE,
     EMPTY_NODE_RADIUS,
     FONT_FAMILY,
@@ -10,10 +10,10 @@ from ._constants import (
     SVG_WIDTH,
     WEEKDAY_LABELS,
 )
-from ._graph import build_edges, connect_groups
-from ._models import Day
-from ._path_finder import Pathfinder
-from ._svg_components import build_pulse, month_labels, node_svg
+from .graph import build_edges, connect_groups
+from .models import Day
+from .path_finder import Pathfinder
+from .svg_components import build_pulse, month_labels, node_svg
 
 
 def build_svg(days: List[Day], total: int, pathfinder: Pathfinder, theme: dict[str, str]) -> str:

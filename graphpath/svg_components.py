@@ -1,6 +1,6 @@
 import math
 from typing import Dict, List, Tuple
-from ._constants import (
+from .constants import (
     ANIMATION_DURATION,
     BASE_RADIUS,
     CURSOR_TRAVEL_SHARE,
@@ -13,7 +13,7 @@ from ._constants import (
     STROKE_WIDTH_NORMAL,
     STROKE_WIDTH_THICK,
 )
-from ._models import Day
+from .models import Day
 
 
 def month_labels(days: List[Day]) -> List[Tuple[int, str]]:

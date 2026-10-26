@@ -1,10 +1,10 @@
 import os
 from typing import Any, Dict, List, Optional
-from ._models import Day
-from ._github_client import fetch_calendar, parse_days
-from ._path_finder import dijkstra_shortest_path
-from ._svg_builder import build_svg
-from ._themes import get_theme
+from .models import Day
+from .github_client import fetch_calendar, parse_days
+from .path_finder import dijkstra_shortest_path
+from .svg_builder import build_svg
+from .themes import get_theme
 import argparse
 import sys
 

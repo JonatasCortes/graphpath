@@ -1,4 +1,4 @@
-from ._constants import ORIGIN_X, ORIGIN_Y, STEP_SIZE
+from .constants import ORIGIN_X, ORIGIN_Y, STEP_SIZE
 from dataclasses import dataclass
 from datetime import date
 
