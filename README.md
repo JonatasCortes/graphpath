@@ -119,6 +119,7 @@ jobs:
           else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git pull
             git add assets/contrib.svg
             git commit -m "auto: update contribution calendar"
             git push
