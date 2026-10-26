@@ -32,7 +32,7 @@ def build_svg(days: List[Day], total: int, pathfinder: Pathfinder, theme: dict[s
     parts.append('<defs>')
     parts.append('<linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">')
     parts.append(
-        f'<stop stop-color="{theme["COLOR_GRADIENT_START"]}"/><stop offset="1" stop-color="{theme["COLOR_GRADIENT_END"]}"/></linearGradient>')
+        f'<stop stop-color="{theme["COLOR_BORDER_GRADIENT_START"]}"/><stop offset="1" stop-color="{theme["COLOR_BORDER_GRADIENT_END"]}"/></linearGradient>')
     parts.append('<radialGradient id="glow" cx=".5" cy=".5" r=".5">')
     parts.append(
         f'<stop stop-color="{theme["COLOR_GLOW"]}" stop-opacity=".22"/>')
@@ -40,11 +40,11 @@ def build_svg(days: List[Day], total: int, pathfinder: Pathfinder, theme: dict[s
         f'<stop offset="1" stop-color="{theme["COLOR_GLOW"]}" stop-opacity="0"/></radialGradient>')
     parts.append('<radialGradient id="pulse">')
     parts.append(
-        f'<stop stop-color="{theme["COLOR_WHITE"]}" stop-opacity=".95"/>')
+        f'<stop stop-color="{theme["COLOR_PULSE_CORE"]}" stop-opacity=".95"/>')
     parts.append(
-        f'<stop offset=".35" stop-color="{theme["COLOR_NODE_FILL"]}" stop-opacity=".9"/>')
+        f'<stop offset=".35" stop-color="{theme["COLOR_PULSE_HALO"]}" stop-opacity=".9"/>')
     parts.append(
-        f'<stop offset="1" stop-color="{theme["COLOR_NODE_FILL"]}" stop-opacity="0"/></radialGradient>')
+        f'<stop offset="1" stop-color="{theme["COLOR_PULSE_HALO"]}" stop-opacity="0"/></radialGradient>')
     parts.append('</defs>')
 
     parts.append(
@@ -52,26 +52,26 @@ def build_svg(days: List[Day], total: int, pathfinder: Pathfinder, theme: dict[s
     parts.append(
         '<ellipse cx="450" cy="130" rx="420" ry="110" fill="url(#glow)"/>')
     parts.append(
-        f'<rect x="22" y="22" width="4" height="22" rx="2" fill="{theme["COLOR_GRADIENT_START"]}"/>')
+        f'<rect x="22" y="22" width="4" height="22" rx="2" fill="{theme["COLOR_TITLE_BAR"]}"/>')
     parts.append(
-        f'<text x="37" y="39" font-family="{FONT_FAMILY}" font-size="18" font-weight="700" fill="{theme["COLOR_NODE_FILL"]}">{CALENDAR_TITLE}</text>')
+        f'<text x="37" y="39" font-family="{FONT_FAMILY}" font-size="18" font-weight="700" fill="{theme["COLOR_TITLE_TEXT"]}">{CALENDAR_TITLE}</text>')
 
     parts.append(
-        f'<text x="878" y="39" text-anchor="end" font-family="{FONT_FAMILY}" font-size="13" fill="{theme["COLOR_SOFT_TEXT"]}">')
+        f'<text x="878" y="39" text-anchor="end" font-family="{FONT_FAMILY}" font-size="13" fill="{theme["COLOR_SUMMARY_TEXT"]}">')
     parts.append(
-        f'<tspan font-size="20" font-weight="700" fill="{theme["COLOR_HIGHLIGHT"]}">{total}</tspan> contributions ')
+        f'<tspan font-size="20" font-weight="700" fill="{theme["COLOR_TOTAL_NUMBER"]}">{total}</tspan> contributions ')
     parts.append(
-        f'<tspan font-size="20" font-weight="700" fill="{theme["COLOR_HIGHLIGHT"]}">{len(active_days)}</tspan> active days in the last year</text>')
+        f'<tspan font-size="20" font-weight="700" fill="{theme["COLOR_ACTIVE_DAYS_NUMBER"]}">{len(active_days)}</tspan> active days in the last year</text>')
 
     for column, name in month_labels(days):
         x: float = ORIGIN_X + column * STEP_SIZE - 4
         parts.append(
-            f'<text x="{x:.1f}" y="74" font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_LABEL"]}">{name}</text>')
+            f'<text x="{x:.1f}" y="74" font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_MONTH_LABEL"]}">{name}</text>')
 
     for row, w_name in WEEKDAY_LABELS.items():
         y: float = ORIGIN_Y + row * STEP_SIZE + 4
         parts.append(
-            f'<text x="42" y="{y:.1f}" text-anchor="end" font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_LABEL"]}">{w_name}</text>')
+            f'<text x="42" y="{y:.1f}" text-anchor="end" font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_WEEKDAY_LABEL"]}">{w_name}</text>')
 
     parts.append(f'<g fill="{theme["COLOR_EMPTY_NODE"]}">')
     for day in days:
@@ -99,7 +99,7 @@ def build_svg(days: List[Day], total: int, pathfinder: Pathfinder, theme: dict[s
     legend_y: float = 216.0
     middle_count: int = round((1 + max_count) / 2)
     parts.append(
-        f'<g font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_LEGEND"]}">')
+        f'<g font-family="{FONT_FAMILY}" font-size="15" fill="{theme["COLOR_LEGEND_TEXT"]}">')
     parts.append(
         f'<text x="778" y="{legend_y + 4}" text-anchor="end">Less</text>')
 

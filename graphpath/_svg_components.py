@@ -51,9 +51,9 @@ def node_svg(x: float, y: float, count: int, max_count: int, theme: dict[str, st
 
     return [
         f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius:.1f}" fill="{theme["COLOR_NODE_BACKGROUND"]}" '
-        f'stroke="{theme["COLOR_NODE_FILL"]}" stroke-opacity="{opacity:.2f}" stroke-width="{STROKE_WIDTH_NORMAL}">{title}</circle>',
+        f'stroke="{theme["COLOR_NODE_RING"]}" stroke-opacity="{opacity:.2f}" stroke-width="{STROKE_WIDTH_NORMAL}">{title}</circle>',
         f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{radius * INNER_RADIUS_RATIO:.1f}" '
-        f'fill="{theme["COLOR_NODE_FILL"]}" fill-opacity="{opacity:.2f}"/>',
+        f'fill="{theme["COLOR_NODE_CORE"]}" fill-opacity="{opacity:.2f}"/>',
     ]
 
 
@@ -90,7 +90,7 @@ def build_pulse(route: List[Day], max_count: int, theme: dict[str, str]) -> List
         second: Day = route[index + 1]
         parts.append(
             f'<line x1="{first.x:.1f}" y1="{first.y:.1f}" x2="{second.x:.1f}" y2="{second.y:.1f}" '
-            f'stroke="{theme["COLOR_EDGE_PULSE"]}" stroke-width="{STROKE_WIDTH_THICK}" stroke-linecap="round" opacity="0">'
+            f'stroke="{theme["COLOR_PULSE_EDGE"]}" stroke-width="{STROKE_WIDTH_THICK}" stroke-linecap="round" opacity="0">'
             f'{light_up(arrivals[index], arrivals[index + 1])}</line>'
         )
 
@@ -98,8 +98,8 @@ def build_pulse(route: List[Day], max_count: int, theme: dict[str, str]) -> List
         radius: float = node_radius(
             day.count, max_count) + PULSE_RADIUS_ADDITION
         parts.append(
-            f'<circle cx="{day.x:.1f}" cy="{day.y:.1f}" r="{radius:.1f}" fill="{theme["COLOR_NODE_FILL"]}" '
-            f'fill-opacity=".35" stroke="{theme["COLOR_NODE_STROKE"]}" stroke-width="{STROKE_WIDTH_NORMAL}" opacity="0">'
+            f'<circle cx="{day.x:.1f}" cy="{day.y:.1f}" r="{radius:.1f}" fill="{theme["COLOR_PULSE_NODE_FILL"]}" '
+            f'fill-opacity=".35" stroke="{theme["COLOR_PULSE_NODE_RING"]}" stroke-width="{STROKE_WIDTH_NORMAL}" opacity="0">'
             f'{light_up(arrivals[index], arrivals[index] + 0.015)}</circle>'
         )
 
